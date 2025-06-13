@@ -1,0 +1,49 @@
+name: Node CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  lint-build-test:
+    runs-on: ubuntu-latest
+    env:
+      APP_MODE: simple
+      OPENAI_API_KEY: dummy
+      NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: dummy
+      CLERK_SECRET_KEY: dummy
+      NEXT_PUBLIC_CLERK_SIGN_IN_URL: https://example.com/sign-in
+      NEXT_PUBLIC_CLERK_SIGN_UP_URL: https://example.com/sign-up
+      NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL: https://example.com/after-sign-in
+      NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL: https://example.com/after-sign-up
+      DATABASE_URL: postgresql://user:pass@localhost:5432/db
+      UPLOADTHING_SECRET: dummy
+      UPLOADTHING_APP_ID: dummy
+      MUX_TOKEN_ID: dummy
+      MUX_TOKEN_SECRET: dummy
+      STRIPE_API_KEY: dummy
+      NEXT_PUBLIC_APP_URL: http://localhost:3000
+      STRIPE_WEBHOOK_SECRET: dummy
+      NEXT_PUBLIC_TEACHER_ID: dummy
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Test
+        run: npm test --if-present
