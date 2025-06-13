@@ -1,93 +1,135 @@
-# Build an LMS Platform: Next.js 13,  React, Stripe, Mux, Prisma, Tailwind, MySQL | Full Course 2023
+# LMS Platform
 
-![Copy of Copy of Copy of Copy of Fullstack Twitter Clone (9)](https://github.com/AntonioErdeljac/next13-lms-platform/assets/23248726/fa077fca-bb74-419a-84de-54ac103bb026)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+A modern Learning Management System built with Next.js 13 and React. It helps creators sell courses with Stripe, stream videos through Mux, and manage content effortlessly. Students gain a personalized dashboard to track progress while instructors enjoy drag-and-drop editing and insightful analytics.
 
-This is a repository for Build an LMS Platform: Next.js 13,  React, Stripe, Mux, Prisma, Tailwind, MySQL | Full Course 2023
+## Table of Contents
 
-[VIDEO TUTORIAL](https://www.youtube.com/watch?v=Big_aFLmekI)
+- [Features](#features)
+- [Demo](#demo)
+- [Setup](#setup)
+  - [Simple Mode Setup](#simple-mode-setup)
+  - [Advanced Mode Setup](#advanced-mode-setup)
+- [Usage](#usage)
+- [Deployment](#deployment)
+- [Contributing](#contributing)
+- [FAQ](#faq)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
 
-Key Features:
+## Features
 
-- Browse & Filter Courses
-- Purchase Courses using Stripe
-- Mark Chapters as Completed or Uncompleted
-- Progress Calculation of each Course
-- Student Dashboard
-- Teacher mode
-- Create new Courses
-- Create new Chapters
-- Easily reorder chapter position with drag n’ drop
-- Upload thumbnails, attachments and videos using UploadThing
-- Video processing using Mux
-- HLS Video player using Mux
-- Rich text editor for chapter description
-- Authentication using Clerk
-- ORM using Prisma
-- MySQL database using Planetscale
+- Browse and filter courses
+- Purchase content securely via Stripe
+- Mark chapters complete and track progress
+- Teacher dashboard with course and chapter management
+- Drag-and-drop reordering for chapters
+- Upload thumbnails, files and videos using UploadThing
+- Stream videos with Mux HLS player
+- Authentication with Clerk
+- Prisma ORM with MySQL/PlanetScale
+- Analytics for revenue and sales
 
-### Prerequisites
+## Demo
 
-**Node version 18.x.x**
+[YouTube Tutorial](https://www.youtube.com/watch?v=Big_aFLmekI)
 
-### Cloning the repository
+## Setup
 
-```shell
-git clone https://github.com/AntonioErdeljac/next13-lms-platform.git
-```
+Below are quick-start instructions for both beginner and advanced users. Environment variables are required in either mode.
 
-### Install packages
+### Simple Mode Setup
 
-```shell
-npm i
-```
+1. **Clone the Repository**
+   ```bash
+   git clone <repo-url>
+   cd <project-name>
+   ```
 
-### Setup .env file
+2. **Install Dependencies**
+   ```bash
+   npm install
+   ```
 
+3. **Configure Environment**
+   ```bash
+   cp .env.example .env.local
+   ```
+   Required variables:
+   * `APP_MODE=simple`
+   * `OPENAI_API_KEY=`
+   * `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=`
+   * `CLERK_SECRET_KEY=`
+   * `NEXT_PUBLIC_CLERK_SIGN_IN_URL=`
+   * `NEXT_PUBLIC_CLERK_SIGN_UP_URL=`
+   * `NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=`
+   * `NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=`
+   * `DATABASE_URL=`
+   * `UPLOADTHING_SECRET=`
+   * `UPLOADTHING_APP_ID=`
+   * `MUX_TOKEN_ID=`
+   * `MUX_TOKEN_SECRET=`
+   * `STRIPE_API_KEY=`
+   * `NEXT_PUBLIC_APP_URL=http://localhost:3000`
+   * `STRIPE_WEBHOOK_SECRET=`
+   * `NEXT_PUBLIC_TEACHER_ID=`
 
-```js
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
-CLERK_SECRET_KEY=
-NEXT_PUBLIC_CLERK_SIGN_IN_URL=
-NEXT_PUBLIC_CLERK_SIGN_UP_URL=
-NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=
-NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=
+4. **Run the App**
+   ```bash
+   npm run dev
+   ```
 
-DATABASE_URL=
+### Advanced Mode Setup
 
-UPLOADTHING_SECRET=
-UPLOADTHING_APP_ID=
+For production use, connect a MySQL database such as PlanetScale, configure Stripe webhooks, and supply valid Mux and UploadThing credentials. Additional plugins or infrastructure (e.g., logging, monitoring, or CI/CD) can be added as desired.
 
-MUX_TOKEN_ID=
-MUX_TOKEN_SECRET=
+## Usage
 
-STRIPE_API_KEY=
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-STRIPE_WEBHOOK_SECRET=
+1. Sign in using Clerk authentication.
+2. Browse available courses or create new ones if you are a teacher.
+3. Purchase courses through the Stripe checkout flow.
+4. Watch videos and mark chapters complete to track your progress.
+5. Teachers can upload videos, reorder chapters, and view sales analytics.
 
-NEXT_PUBLIC_TEACHER_ID=
-```
+## Deployment
 
-### Setup Prisma
+This project works well with Vercel.
 
-Add MySQL Database (I used PlanetScale)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
 
-```shell
-npx prisma generate
-npx prisma db push
+1. Set the environment variables on Vercel to match your `.env.local` file.
+2. Push your repository to GitHub or GitLab and import it into Vercel.
+3. Click **Deploy**.
 
-```
+## Contributing
 
-### Start the app
+Contributions are welcome! Feel free to open issues or submit pull requests. See `CONTRIBUTING.md` if available.
 
-```shell
-npm run dev
-```
+## FAQ
 
-## Available commands
+**Q:** Can I use a different database?
 
-Running commands with npm `npm run [command]`
+**A:** Yes. Update the `DATABASE_URL` and run Prisma migrations.
 
-| command         | description                              |
-| :-------------- | :--------------------------------------- |
-| `dev`           | Starts a development instance of the app |
+**Q:** Do I need Mux and UploadThing for local testing?
+
+**A:** You can leave these variables empty in simple mode, but video upload and streaming features will be disabled.
+
+**Q:** How do I become a teacher?
+
+**A:** Set your user ID as `NEXT_PUBLIC_TEACHER_ID` in the environment variables.
+
+## License
+
+This project is licensed under the MIT license.
+
+## Acknowledgements
+
+Built with [Next.js](https://nextjs.org/), [Prisma](https://prisma.io/), [Stripe](https://stripe.com/), [Mux](https://mux.com/), [UploadThing](https://uploadthing.com/), and [Tailwind CSS](https://tailwindcss.com/).
+
+## Contact
+
+For support, open an issue on GitHub.
+
