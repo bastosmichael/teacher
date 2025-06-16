@@ -1,8 +1,8 @@
-# LMS Platform
+# Teacher
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A modern Learning Management System built with Next.js 13 and React. It helps creators sell courses with Stripe, stream videos through Mux, and manage content effortlessly. Students gain a personalized dashboard to track progress while instructors enjoy drag-and-drop editing and insightful analytics.
+Teacher is a modern Learning Management System built with Next.js 13 and React. It helps creators sell courses with Stripe, stream videos through Mux, and manage content effortlessly. Students gain a personalized dashboard to track progress while instructors enjoy drag-and-drop editing and insightful analytics.
 
 ## Table of Contents
 
