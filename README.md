@@ -7,7 +7,6 @@ Teacher is a modern Learning Management System built with Next.js 13 and React. 
 ## Table of Contents
 
 - [Features](#features)
-- [Demo](#demo)
 - [Setup](#setup)
   - [Simple Mode Setup](#simple-mode-setup)
   - [Advanced Mode Setup](#advanced-mode-setup)
@@ -32,9 +31,6 @@ Teacher is a modern Learning Management System built with Next.js 13 and React. 
 - Prisma ORM with MySQL/PlanetScale
 - Analytics for revenue and sales
 
-## Demo
-
-[YouTube Tutorial](https://www.youtube.com/watch?v=Big_aFLmekI)
 
 ## Setup
 
